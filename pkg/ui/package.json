@@ -19,10 +19,10 @@
     "@vitejs/plugin-react": "^3.1.0",
     "@vitest/coverage-c8": "^0.28.4",
     "eslint": "^7.32.0",
-    "eslint-config-custom": "workspace:*",
+    "eslint-config-custom": "*",
     "jsdom": "^21.1.0",
     "react": "^18.2.0",
-    "tsconfig": "workspace:*",
+    "tsconfig": "*",
     "typescript": "^4.5.2",
     "vitest": "^0.28.4"
   }
