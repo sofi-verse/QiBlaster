@@ -11,7 +11,7 @@ const config = getConfig()
 
 createWeb3Modal({
   wagmiConfig: config,
-  projectId: process.env.NEXT_PUBLIC_WC_PROJECT_ID || '',
+  projectId: process.env.NEXT_PUBLIC_WC_PROJECT_ID || '98c91f41fde1e35bbd1840d31155e924',
 })
 
 export function Providers(props: {
