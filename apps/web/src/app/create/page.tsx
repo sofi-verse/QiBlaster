@@ -147,9 +147,8 @@ function CreatePage() {
                   )}
                 />
                 {tokenholders.map((tokenholder, index) => (
-                  <>
+                  <div key={`tokenholders.${index}`}>
                   <FormField
-                    key={index}
                     control={form.control}
                     name={`tokenholders.${index}`}
                     render={({ field }) => (
@@ -167,7 +166,6 @@ function CreatePage() {
                     )}
                   />
                   <FormField
-                    key={index}
                     control={form.control}
                     name={`tokenholdersamount.${index}`}
                     render={({ field }) => (
@@ -179,7 +177,7 @@ function CreatePage() {
                       </FormItem>
                     )}
                   />
-                  </>
+                  </div>
                 ))}
                 <Button type="button" onClick={addTokenholder}>Add more</Button>
               </CardContent>
@@ -296,7 +294,7 @@ function CreatePage() {
                 />
                 {grantees.map((grantee, index) => (
                   <FormField
-                    key={index}
+                    key={`grantees.${index}`}
                     control={form.control}
                     name={`grantees.${index}`}
                     render={({ field }) => (
