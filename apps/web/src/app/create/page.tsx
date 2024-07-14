@@ -89,13 +89,17 @@ function CreatePage() {
     <>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
-          <div>
-            <h2>Create your organization</h2>
-            <p>Name and define your DAO parameters so grantees know they are joining the right organization.</p>
-            <Card>
-              <CardHeader>
-                <CardTitle>Claim a name</CardTitle>
-                <CardDescription>QiBlaster uses the Ethereum Name Service (ENS) to assign names to organizations.</CardDescription>
+          <div className="p-10 rounded-md">
+            <h2 className="text-3xl font-bold mb-2">Create your organization</h2>
+            <p className="text-gray-700 mb-6">
+              Name and define your DAO parameters so grantees know they are joining the right organization.
+            </p>
+            <Card className="border border-yellow-300 rounded-lg mb-6 p-6">
+              <CardHeader className="mb-4">
+                <CardTitle className="text-xl font-semibold mb-2">Claim a name</CardTitle>
+                <CardDescription className="text-gray-600">
+                  QiBlaster uses the Ethereum Name Service (ENS) to assign names to organizations.
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <FormField
@@ -103,11 +107,11 @@ function CreatePage() {
                   name="daoname"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>DAO name</FormLabel>
+                      <FormLabel className="block text-sm font-medium text-gray-700 mb-2">DAO name</FormLabel>
                       <FormControl>
-                        <Input placeholder="qidao" {...field} />
+                        <Input className="w-full border border-gray-300 rounded-md p-2 mb-2" placeholder="qidao" {...field} />
                       </FormControl>
-                      <FormDescription>
+                      <FormDescription className="text-gray-500">
                         This is your public display name.
                       </FormDescription>
                       <FormMessage />
@@ -116,10 +120,12 @@ function CreatePage() {
                 />
               </CardContent>
             </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>Token parameters</CardTitle>
-                <CardDescription>These settings will determine the name and symbol of the token that will be created for your organization. Add members to define the initial distribution of this token.</CardDescription>
+            <Card className="border border-yellow-300 rounded-lg mb-6 p-6">
+              <CardHeader className="mb-4">
+                <CardTitle className="text-xl font-semibold mb-2">Token parameters</CardTitle>
+                <CardDescription className="text-gray-600">
+                  These settings will determine the name and symbol of the token that will be created for your organization. Add members to define the initial distribution of this token.
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <FormField
@@ -127,9 +133,9 @@ function CreatePage() {
                   name="tokenname"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Token name</FormLabel>
+                      <FormLabel className="block text-sm font-medium text-gray-700 mb-2">Token name</FormLabel>
                       <FormControl>
-                        <Input placeholder="QiToken" {...field} />
+                        <Input className="w-full border border-gray-300 rounded-md p-2 mb-2" placeholder="QiToken" {...field} />
                       </FormControl>
                     </FormItem>
                   )}
@@ -139,53 +145,58 @@ function CreatePage() {
                   name="tokensymbol"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Token symbol</FormLabel>
+                      <FormLabel className="block text-sm font-medium text-gray-700 mb-2">Token symbol</FormLabel>
                       <FormControl>
-                        <Input placeholder="QI" {...field} />
+                        <Input className="w-full border border-gray-300 rounded-md p-2 mb-2" placeholder="QI" {...field} />
                       </FormControl>
                     </FormItem>
                   )}
                 />
                 {tokenholders.map((tokenholder, index) => (
-                  <div key={`tokenholders.${index}`}>
-                  <FormField
-                    control={form.control}
-                    name={`tokenholders.${index}`}
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Token holder {index + 1}</FormLabel>
-                        <FormControl>
-                          <Input
-                            type="text"
-                            {...field}
-                            value={tokenholder}
-                            onChange={(e) => handleTokenholderChange(index, e.target.value)}
-                          />
-                        </FormControl>
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name={`tokenholdersamount.${index}`}
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Token holder amount {index + 1}</FormLabel>
-                        <FormControl>
-                          <Input {...field} />
-                        </FormControl>
-                      </FormItem>
-                    )}
-                  />
+                  <div key={`tokenholders.${index}`} className="mb-4">
+                    <FormField
+                      control={form.control}
+                      name={`tokenholders.${index}`}
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="block text-sm font-medium text-gray-700 mb-2">Token holder {index + 1}</FormLabel>
+                          <FormControl>
+                            <Input
+                              className="w-full border border-gray-300 rounded-md p-2 mb-2"
+                              type="text"
+                              {...field}
+                              value={tokenholder}
+                              onChange={(e) => handleTokenholderChange(index, e.target.value)}
+                            />
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name={`tokenholdersamount.${index}`}
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="block text-sm font-medium text-gray-700 mb-2">Token holder amount {index + 1}</FormLabel>
+                          <FormControl>
+                            <Input className="w-full border border-gray-300 rounded-md p-2 mb-2" {...field} />
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
                   </div>
                 ))}
-                <Button type="button" onClick={addTokenholder}>Add more</Button>
+                <Button type="button" onClick={addTokenholder} className="bg-yellow-300 text-yellow-800 py-2 px-4 rounded-md hover:bg-yellow-400">
+                  Add more
+                </Button>
               </CardContent>
             </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>Voting parameters</CardTitle>
-                <CardDescription>Think about these parameters as a balancing act between ease of passing proposals and security against malicious proposals. That's an important – and tough – tradeoff to get right!</CardDescription>
+            <Card className="border border-yellow-300 rounded-lg mb-6 p-6">
+              <CardHeader className="mb-4">
+                <CardTitle className="text-xl font-semibold mb-2">Voting parameters</CardTitle>
+                <CardDescription className="text-gray-600">
+                  Think about these parameters as a balancing act between ease of passing proposals and security against malicious proposals. That's an important – and tough – tradeoff to get right!
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <FormField
@@ -193,9 +204,9 @@ function CreatePage() {
                   name="minquorum"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Minimum quorum</FormLabel>
+                      <FormLabel className="block text-sm font-medium text-gray-700 mb-2">Minimum quorum</FormLabel>
                       <FormControl>
-                        <Slider defaultValue={[33]} max={100} step={1} />
+                        <Slider className="w-full" defaultValue={[33]} max={100} step={1} />
                       </FormControl>
                     </FormItem>
                   )}
@@ -205,9 +216,9 @@ function CreatePage() {
                   name="votingdelay"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Voting delay</FormLabel>
+                      <FormLabel className="block text-sm font-medium text-gray-700 mb-2">Voting delay</FormLabel>
                       <FormControl>
-                        <Input type="number" placeholder="1" {...field} />
+                        <Input className="w-full border border-gray-300 rounded-md p-2 mb-2" type="number" placeholder="1" {...field} />
                       </FormControl>
                     </FormItem>
                   )}
@@ -217,9 +228,9 @@ function CreatePage() {
                   name="votingperiod"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Voting period</FormLabel>
+                      <FormLabel className="block text-sm font-medium text-gray-700 mb-2">Voting period</FormLabel>
                       <FormControl>
-                        <Input type="number" placeholder="5" {...field} />
+                        <Input className="w-full border border-gray-300 rounded-md p-2 mb-2" type="number" placeholder="5" {...field} />
                       </FormControl>
                     </FormItem>
                   )}
@@ -229,9 +240,9 @@ function CreatePage() {
                   name="timelockdelay"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Timelock delay</FormLabel>
+                      <FormLabel className="block text-sm font-medium text-gray-700 mb-2">Timelock delay</FormLabel>
                       <FormControl>
-                        <Input type="number" placeholder="1" {...field} />
+                        <Input className="w-full border border-gray-300 rounded-md p-2 mb-2" type="number" placeholder="1" {...field} />
                       </FormControl>
                     </FormItem>
                   )}
@@ -239,10 +250,12 @@ function CreatePage() {
               </CardContent>
             </Card>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>Distribution settings</CardTitle>
-                <CardDescription>These parameters will determine the treasury size, how it will be distributed and the grantees that will receive it.</CardDescription>
+            <Card className="border border-yellow-300 rounded-lg mb-6 p-6">
+              <CardHeader className="mb-4">
+                <CardTitle className="text-xl font-semibold mb-2">Distribution settings</CardTitle>
+                <CardDescription className="text-gray-600">
+                  These parameters will determine the treasury size, how it will be distributed and the grantees that will receive it.
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <FormField
@@ -250,9 +263,9 @@ function CreatePage() {
                   name="initialamount"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Initial amount</FormLabel>
+                      <FormLabel className="block text-sm font-medium text-gray-700 mb-2">Initial amount</FormLabel>
                       <FormControl>
-                        <Input type="number" {...field} />
+                        <Input className="w-full border border-gray-300 rounded-md p-2 mb-2" type="number" {...field} />
                       </FormControl>
                     </FormItem>
                   )}
@@ -262,21 +275,21 @@ function CreatePage() {
                   name="distributiontoken"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Distribution token</FormLabel>
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
-                          <FormControl>
-                            <SelectTrigger className="w-[180px]">
-                              <SelectValue placeholder="Token" />
+                      <FormLabel className="block text-sm font-medium text-gray-700 mb-2">Distribution token</FormLabel>
+                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <FormControl>
+                          <SelectTrigger className="w-full border border-gray-300 rounded-md p-2 mb-2">
+                            <SelectValue placeholder="Token" />
                           </SelectTrigger>
-                      </FormControl>
-                          <SelectContent>
-                            <SelectItem value="USDCx">USDCx</SelectItem>
-                          </SelectContent>
-                        </Select>
-                        <FormDescription>
-                          This is the token that will be used to distribute the treasury.
-                        </FormDescription>
-                        <FormMessage />
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value="USDCx">USDCx</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <FormDescription className="text-gray-500">
+                        This is the token that will be used to distribute the treasury.
+                      </FormDescription>
+                      <FormMessage />
                     </FormItem>
                   )}
                 />
@@ -285,9 +298,9 @@ function CreatePage() {
                   name="amountdistributedmonthly"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Amount distributed monthly</FormLabel>
+                      <FormLabel className="block text-sm font-medium text-gray-700 mb-2">Amount distributed monthly</FormLabel>
                       <FormControl>
-                        <Input type="number" {...field} />
+                        <Input className="w-full border border-gray-300 rounded-md p-2 mb-2" type="number" {...field} />
                       </FormControl>
                     </FormItem>
                   )}
@@ -299,9 +312,10 @@ function CreatePage() {
                     name={`grantees.${index}`}
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Grantee {index + 1}</FormLabel>
+                        <FormLabel className="block text-sm font-medium text-gray-700 mb-2">Grantee {index + 1}</FormLabel>
                         <FormControl>
                           <Input
+                            className="w-full border border-gray-300 rounded-md p-2 mb-2"
                             type="text"
                             {...field}
                             value={grantee}
@@ -312,14 +326,19 @@ function CreatePage() {
                     )}
                   />
                 ))}
-                <Button type="button" onClick={addGrantee}>Add more</Button>
+                <Button type="button" onClick={addGrantee} className="bg-yellow-300 text-yellow-800 py-2 px-4 rounded-md hover:bg-yellow-400">
+                  Add more
+                </Button>
               </CardContent>
             </Card>
-            <Button type="submit">Create DAO</Button>
+            <Button type="submit" className="bg-yellow-500 text-white py-3 px-6 rounded-md hover:bg-yellow-600">
+              Create DAO
+            </Button>
           </div>
         </form>
       </Form>
     </>
+
   )
 }
 
