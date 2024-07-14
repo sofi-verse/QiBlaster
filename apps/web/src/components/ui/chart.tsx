@@ -92,7 +92,7 @@ ${colorConfig
   .join("\n")}
 }
 `
-        ),
+        ).join(""), // Join the array of strings into a single string
       }}
     />
   )

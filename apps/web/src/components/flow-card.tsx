@@ -129,9 +129,9 @@ export function FlowCard({className}: {className?: string}) {
     <Card className={className}>
       <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">
         <div className="grid flex-1 gap-1 text-center sm:text-left">
-          <CardTitle>Area Chart - Interactive</CardTitle>
+          <CardTitle>Blast</CardTitle>
           <CardDescription>
-            Showing total visitors for the last 3 months
+            Check on the blast power transmission for all grantees.
           </CardDescription>
         </div>
         <Select value={timeRange} onValueChange={setTimeRange}>
